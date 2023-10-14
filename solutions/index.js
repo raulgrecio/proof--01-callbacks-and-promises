@@ -1,4 +1,4 @@
-// 1 - no funciona como se espera
+// 1.- no funciona como se espera
 // hay que arreglar algo
 
 import net from "node:net";
@@ -21,3 +21,11 @@ ping("midu.dev", (err, info) => {
   if (err) console.error(err);
   console.log(info);
 });
+
+// 2.- transformar a promesas
+
+export function obtenerDatosPromise(callback) {
+  setTimeout(() => {
+    callback(null, { data: "datos importantes" });
+  }, 2000);
+}
