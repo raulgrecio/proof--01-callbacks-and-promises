@@ -2,6 +2,7 @@
 // hay que arreglar algo
 
 import net from "node:net";
+import fs from "node:fs";
 
 export const ping = (ip, callback) => {
   const startTime = process.hrtime();
@@ -32,4 +33,31 @@ export function obtenerDatosPromise() {
   });
 }
 
+// 3.-
+// que hace
+// corrige
+// si hay algo innecesario elimina
+// mejora legibilidad
+
+export function procesarArchivo() {
+  fs.readFile("input.txt", "utf8", (error, contenido) => {
+    if (error) {
+      console.error("Error leyendo archivo:", error.message);
+      return false;
+    }
+
+    setTimeout(() => {
+      const textoProcesado = contenido.toUpperCase();
+
+      fs.writeFile("output.txt", textoProcesado, (error) => {
+        if (error) {
+          console.error("Error guardando archivo:", error.message);
+          return false;
+        }
+
+        console.log("Archivo procesado y guardado con éxito");
+        return true;
+      });
+    }, 1000);
+  });
 }
