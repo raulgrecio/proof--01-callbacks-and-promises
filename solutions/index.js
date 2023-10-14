@@ -24,8 +24,12 @@ ping("midu.dev", (err, info) => {
 
 // 2.- transformar a promesas
 
-export function obtenerDatosPromise(callback) {
-  setTimeout(() => {
-    callback(null, { data: "datos importantes" });
-  }, 2000);
+export function obtenerDatosPromise() {
+  return new Promise((resolve, _) => {
+    setTimeout(() => {
+      resolve({ data: "datos importantes" });
+    }, 2000);
+  });
+}
+
 }
