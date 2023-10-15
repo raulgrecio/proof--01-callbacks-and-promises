@@ -18,7 +18,7 @@ export const ping = (ip, callback) => {
   });
 };
 
-ping("midu.dev", (err, info) => {
+ping("raul.dev", (err, info) => {
   if (err) console.error(err);
   console.log(info);
 });
@@ -74,13 +74,15 @@ export async function procesarArchivoPromise() {
 }
 
 // 4.-
-// ¿Cómo mejorarías el siguiente código y por qué?
-// Arregla los tests si es necesario:
+// ¿Cómo mejorarías el siguiente código y por qué? -> convertirlo en async/await
+// ✅ Arregla los tests si es necesario
 
-export function leerArchivos() {
-  const archivo1 = fs.readFileSync("archivo1.txt", "utf8");
-  const archivo2 = fs.readFileSync("archivo2.txt", "utf8");
-  const archivo3 = fs.readFileSync("archivo3.txt", "utf8");
+export async function leerArchivos() {
+  console.time("leerArchivos");
+  const archivo1 = await fs.promises.readFile("archivo1.txt", "utf8");
+  const archivo2 = await fs.promises.readFile("archivo2.txt", "utf8");
+  const archivo3 = await fs.promises.readFile("archivo3.txt", "utf8");
+  console.timeEnd("leerArchivos");
 
   return `${archivo1} ${archivo2} ${archivo3}`;
 }
