@@ -89,12 +89,12 @@ export async function leerArchivos() {
   return `${archivo1} ${archivo2} ${archivo3}`;
 }
 
-// 5 - Escribe una funcion `delay` que retorne una promesa que se resuelva después de `n` milisegundos. Por ejemplo:
-export async function delay() {
-  // ...
+// 5.-
+// ✅ Escribe una funcion `delay` que retorne una promesa que se resuelva después de `n` milisegundos. Por ejemplo:
+export async function delay(ms) {
+  return new Promise((resolve, _) => {
+    setTimeout(() => {
+      resolve();
+    }, ms);
+  });
 }
-
-// delay(3000).then(() => console.log("Hola mundo"));
-// // o..
-// await delay(3000);
-// console.log("Hola mundo");
