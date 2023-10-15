@@ -61,3 +61,14 @@ export function procesarArchivo(callback) {
     fs.writeFile("output.txt", textoProcesado, handleWrite);
   });
 }
+
+export async function procesarArchivoPromise() {
+  try {
+    const contenido = await fs.promises.readFile("input.txt", "utf8");
+    const textoProcesado = contenido.toUpperCase();
+    await fs.promises.writeFile("output.txt", textoProcesado);
+  } catch (error) {
+    console.log("Error al procesar el archivo:", error.message);
+    throw error;
+  }
+}
