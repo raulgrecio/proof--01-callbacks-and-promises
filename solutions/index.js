@@ -78,9 +78,9 @@ export async function procesarArchivoPromise() {
 // Arregla los tests si es necesario:
 
 export function leerArchivos() {
-  const archivo1 = fs.readSync("archivo1.txt", "utf8");
-  const archivo2 = fs.readSync("archivo2.txt", "utf8");
-  const archivo3 = fs.readSync("archivo3.txt", "utf8");
+  const archivo1 = fs.readFileSync("archivo1.txt", "utf8");
+  const archivo2 = fs.readFileSync("archivo2.txt", "utf8");
+  const archivo3 = fs.readFileSync("archivo3.txt", "utf8");
 
   return `${archivo1} ${archivo2} ${archivo3}`;
 }
