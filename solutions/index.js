@@ -74,7 +74,7 @@ export async function procesarArchivoPromise() {
 }
 
 // 4.-
-// ¿Cómo mejorarías el siguiente código y por qué? -> convertirlo en async/await
+// ✅ ¿Cómo mejorarías el siguiente código y por qué? -> convert to async/await with promise all
 // ✅ Arregla los tests si es necesario
 
 export async function leerArchivos() {
@@ -88,3 +88,13 @@ export async function leerArchivos() {
 
   return `${archivo1} ${archivo2} ${archivo3}`;
 }
+
+// 5 - Escribe una funcion `delay` que retorne una promesa que se resuelva después de `n` milisegundos. Por ejemplo:
+export async function delay() {
+  // ...
+}
+
+// delay(3000).then(() => console.log("Hola mundo"));
+// // o..
+// await delay(3000);
+// console.log("Hola mundo");
