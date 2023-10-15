@@ -79,9 +79,11 @@ export async function procesarArchivoPromise() {
 
 export async function leerArchivos() {
   console.time("leerArchivos");
-  const archivo1 = await fs.promises.readFile("archivo1.txt", "utf8");
-  const archivo2 = await fs.promises.readFile("archivo2.txt", "utf8");
-  const archivo3 = await fs.promises.readFile("archivo3.txt", "utf8");
+  const [archivo1, archivo2, archivo3] = await Promise.all([
+    fs.promises.readFile("archivo1.txt", "utf8"),
+    fs.promises.readFile("archivo2.txt", "utf8"),
+    fs.promises.readFile("archivo3.txt", "utf8"),
+  ]);
   console.timeEnd("leerArchivos");
 
   return `${archivo1} ${archivo2} ${archivo3}`;
