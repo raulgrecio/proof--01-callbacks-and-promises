@@ -4,10 +4,10 @@ import { describe, it } from "node:test";
 import { equal, ifError } from "node:assert/strict";
 
 describe("1. ping", () => {
-  it("1.1. ping midu.dev", (_, done) => {
-    ping("midu.dev", (err, info) => {
+  it("1.1. ping raul.dev", (_, done) => {
+    ping("raul.dev", (err, info) => {
       ifError(err);
-      equal(info.ip, "midu.dev");
+      equal(info.ip, "raul.dev");
       done();
     });
   });
