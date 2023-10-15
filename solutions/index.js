@@ -72,3 +72,15 @@ export async function procesarArchivoPromise() {
     throw error;
   }
 }
+
+// 4.-
+// ¿Cómo mejorarías el siguiente código y por qué?
+// Arregla los tests si es necesario:
+
+export function leerArchivos() {
+  const archivo1 = fs.readSync("archivo1.txt", "utf8");
+  const archivo2 = fs.readSync("archivo2.txt", "utf8");
+  const archivo3 = fs.readSync("archivo3.txt", "utf8");
+
+  return `${archivo1} ${archivo2} ${archivo3}`;
+}
