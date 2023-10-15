@@ -37,9 +37,19 @@ export function obtenerDatosPromise() {
 // ✅ que hace: el contenido de un input.txt y lo escribe en output en mayúsculas
 // ✅ corrige
 // ✅ si hay algo innecesario elimina
-// mejora legibilidad
+// ✅ mejora legibilidad
 
 export function procesarArchivo(callback) {
+  const handleWrite = (error) => {
+    if (error) {
+      console.log("Error guardando archivo:", error.message);
+      callback(error);
+    }
+
+    console.log("Archivo procesado y guardado con éxito");
+    callback(null);
+  };
+
   fs.readFile("input.txt", "utf8", (error, contenido) => {
     if (error) {
       console.log("Error leyendo archivo:", error.message);
@@ -48,14 +58,6 @@ export function procesarArchivo(callback) {
 
     const textoProcesado = contenido.toUpperCase();
 
-    fs.writeFile("output.txt", textoProcesado, (error) => {
-      if (error) {
-        console.log("Error guardando archivo:", error.message);
-        callback(error);
-      }
-
-      console.log("Archivo procesado y guardado con éxito");
-      callback(null);
-    });
+    fs.writeFile("output.txt", textoProcesado, handleWrite);
   });
 }
