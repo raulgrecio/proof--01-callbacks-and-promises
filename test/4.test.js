@@ -1,3 +1,4 @@
+/* cSpell:disable */
 import { leerArchivos } from "../solutions/index.js";
 
 import { describe, it } from "node:test";

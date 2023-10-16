@@ -1,16 +1,17 @@
+/* cSpell:disable */
 import {
   ping,
   obtenerDatosPromise,
   procesarArchivoPromise,
   procesarArchivo,
   leerArchivos,
+  delay,
 } from "../solutions/index.js";
 
-import { describe, it, beforeEach, afterEach } from "node:test";
-import { equal, ifError } from "node:assert/strict";
+import { describe, it, afterEach } from "node:test";
+import { equal, ifError, strictEqual } from "node:assert/strict";
 import { unlinkSync, writeFileSync } from "node:fs";
 import { readFile } from "node:fs/promises";
-import { createRequire } from "node:module";
 
 describe("1. ping", () => {
   it("1.1. ping raul.dev", (_, done) => {
@@ -47,22 +48,67 @@ describe("3. procesarArchivoPromise", () => {
     });
   });
 
-  // it('3.1. procesarArchivoPromise', async () => {
-  //   writeFileSync('input.txt', 'hola')
-  //   await procesarArchivoPromise()
-  //   const contenido = await readFile('output.txt', 'utf8')
-  //   equal(contenido, 'HOLA')
-  // })
+  it("3.2. procesarArchivoPromise", async () => {
+    writeFileSync("input.txt", "hola");
+    await procesarArchivoPromise();
+    const contenido = await readFile("output.txt", "utf8");
+    equal(contenido, "HOLA");
+  });
 });
 
 describe("4. leerArchivos", () => {
-  // it('4.1. leerArchivos', () => {
-  //   const mensaje = leerArchivos()
-  //   equal(mensaje, 'hola qué tal')
-  // })
-
   it("4.1. leerArchivos", async () => {
     const mensaje = await leerArchivos();
     equal(mensaje, "hola qué tal");
+  });
+});
+
+describe("5. delay", () => {
+  it("5.1. delay", async () => {
+    const start = Date.now();
+    const delayTime = 1000;
+
+    await delay(delayTime);
+
+    const end = Date.now();
+    const elapsed = end - start;
+
+    strictEqual(
+      elapsed >= delayTime,
+      true,
+      `The promise was resolved sooner than expected: ${elapsed}ms instead of ${delayTime}ms`
+    );
+
+    console.log({
+      start,
+      delayTime,
+      end,
+      elapsed,
+      strictEqual: elapsed >= delayTime,
+    });
+  });
+
+  it("5.2. delay", () => {
+    const start = Date.now();
+    const delayTime = 3000;
+
+    delay(delayTime).then(() => {
+      const end = Date.now();
+      const elapsed = end - start;
+
+      strictEqual(
+        elapsed >= delayTime,
+        true,
+        `The promise was resolved sooner than expected: ${elapsed}ms instead of ${delayTime}ms`
+      );
+
+      console.log({
+        start,
+        delayTime,
+        end,
+        elapsed,
+        strictEqual: elapsed >= delayTime,
+      });
+    });
   });
 });

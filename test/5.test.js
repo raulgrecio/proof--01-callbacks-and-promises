@@ -1,3 +1,4 @@
+/* cSpell:disable */
 import { delay } from "../solutions/index.js";
 
 import { describe, it } from "node:test";
@@ -13,11 +14,10 @@ describe("5. delay", () => {
     const end = Date.now();
     const elapsed = end - start;
 
-    // Utiliza la función 'strictEqual' de 'assert' para verificar si el tiempo transcurrido es igual o mayor que el tiempo de retraso
     strictEqual(
       elapsed >= delayTime,
       true,
-      `La promesa se resolvió antes de lo esperado: ${elapsed}ms en lugar de ${delayTime}ms`
+      `The promise was resolved sooner than expected: ${elapsed}ms instead of ${delayTime}ms`
     );
 
     console.log({
@@ -40,7 +40,7 @@ describe("5. delay", () => {
       strictEqual(
         elapsed >= delayTime,
         true,
-        `La promesa se resolvió antes de lo esperado: ${elapsed}ms en lugar de ${delayTime}ms`
+        `The promise was resolved sooner than expected: ${elapsed}ms instead of ${delayTime}ms`
       );
 
       console.log({

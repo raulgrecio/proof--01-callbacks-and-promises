@@ -1,3 +1,4 @@
+/* cSpell:disable */
 import { procesarArchivo, procesarArchivoPromise } from "../solutions/index.js";
 
 import { describe, it, afterEach } from "node:test";

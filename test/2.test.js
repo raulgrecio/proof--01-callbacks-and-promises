@@ -1,3 +1,4 @@
+/* cSpell:disable */
 import { obtenerDatosPromise } from "../solutions/index.js";
 
 import { describe, it } from "node:test";
